@@ -18,12 +18,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.bilim_asker.restapi_jetpackcompose.data.api.model.PostResponseModel
 import com.bilim_asker.restapi_jetpackcompose.presentation.theme.RestApi_JetpackComposeTheme
 import com.bilim_asker.restapi_jetpackcompose.utils.NetworkResult
 
 @Composable
 fun MainScreen(mainViewModel: MainViewModel) {
+
     val state = mainViewModel.allPostResponse.observeAsState().value ?: NetworkResult.Loading()
 
     when (state) {

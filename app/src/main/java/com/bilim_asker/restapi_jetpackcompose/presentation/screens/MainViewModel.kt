@@ -32,7 +32,9 @@ class MainViewModel @Inject constructor(
         getAllPosts()
     }
 
-     private fun getAllPosts() {
+    fun getPagingAllPost() = getAllPostUseCase.invokePaging()
+
+    private fun getAllPosts() {
         viewModelScope.launch {
             getAllPostUseCase.invoke().let {
                 _allPostResponse.value = it
@@ -40,7 +42,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-     fun postPost() {
+    fun postPost() {
         viewModelScope.launch {
             posPostUseCase.invoke(
                 body = PostResponseModel(
@@ -51,7 +53,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-     fun putPost() {
+    fun putPost() {
         viewModelScope.launch {
             putPostUseCase.invoke(
                 id = "3",
@@ -62,7 +64,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-     fun patchPost() {
+    fun patchPost() {
         viewModelScope.launch {
             patchPostUseCase.invoke(
                 id = "3",
@@ -73,7 +75,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-     fun deletePost() {
+    fun deletePost() {
         viewModelScope.launch {
             deletePostUseCase.invoke(id = "3").let {
                 Log.d("akaza", "data: ${it.data}")

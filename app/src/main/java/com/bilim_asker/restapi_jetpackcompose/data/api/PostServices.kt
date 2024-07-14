@@ -9,11 +9,15 @@ import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface PostServices {
 
     @GET("/posts")
     suspend fun getAllPost(): Response<List<PostResponseModel>>
+
+    @GET("/posts")
+    suspend fun getPagingAllPost(@Query("_start") pager: Int, @Query("_limit") limit: Int): Response<List<PostResponseModel>>
 
     @POST("/posts")
     suspend fun postPost(@Body body: PostResponseModel): Response<PostResponseModel>

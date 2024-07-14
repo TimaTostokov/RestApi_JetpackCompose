@@ -29,4 +29,6 @@ class PostRepository @Inject constructor(private val remoteDataSource: RemoteDat
         return safeApiCall { remoteDataSource.deletePosts(id = id) }
     }
 
+    fun getPagingSource() = remoteDataSource.getPagingAllPost()
+
 }
